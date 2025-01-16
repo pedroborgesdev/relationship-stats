@@ -1,21 +1,20 @@
 function calculateTimeDifference() {
-    // Pega a data de input
-    const targetDateString = "04/07/2024"
-    const targetDate = new Date(targetDateString);
+    const targetDateString = "04/07/2024";
+    
+    const targetDateParts = targetDateString.split("/");
+    const targetDate = new Date(targetDateParts[2], targetDateParts[1] - 1, targetDateParts[0]);
+
     const now = new Date();
 
-    // Calcular a diferença em milissegundos
     const diffMilliseconds = Math.abs(now - targetDate);
 
-    // Converter a diferença em diferentes unidades
     const seconds = Math.floor(diffMilliseconds / 1000);
     const minutes = Math.floor(seconds / 60);
     const hours = Math.floor(minutes / 60);
     const days = Math.floor(hours / 24);
-    const months = Math.floor(days / 30.44); // Aproximado
-    const years = Math.floor(days / 365.25); // Considerando anos bissextos
+    const months = Math.floor(days / 30.44);
+    const years = Math.floor(days / 365.25);
 
-    // Exibir o resultado na página
     const resultDiv = document.getElementById("result");
     resultDiv.innerHTML = `
         <h1 class="result-title">Desde ${targetDateString}</h1>
@@ -23,5 +22,6 @@ function calculateTimeDifference() {
         <p class="result-hour">${hours % 24} horas, ${minutes % 60} minutos, ${seconds % 60} segundos.</p>
     `;
 }
-calculateTimeDifference()
+
+calculateTimeDifference();
 setInterval(calculateTimeDifference, 1000);
