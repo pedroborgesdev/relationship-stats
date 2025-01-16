@@ -1,5 +1,5 @@
 function calculateTimeDifference() {
-    const targetDateString = "04/07/2024";
+    const targetDateString = "07/04/2024";
     
     const targetDateParts = targetDateString.split("/");
     const targetDate = new Date(targetDateParts[2], targetDateParts[1] - 1, targetDateParts[0]);
